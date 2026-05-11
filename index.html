@@ -1898,9 +1898,10 @@ function closeModal(){
 }
 
 function modalGoToDay(){
+  var dateToEdit = editingDate; // save BEFORE closeModal resets it
   closeModal();
-  if(editingDate){
-    enterApp(editingDate);
+  if(dateToEdit){
+    enterApp(dateToEdit);
   }
 }
 
@@ -1935,8 +1936,10 @@ function enterApp(dateKey){
   }
 
   // Show app screen, hide calendar
-  document.getElementById('screen-cal').style.display='none';
-  document.getElementById('screen-app').style.display='block';
+  var calEl = document.getElementById('screen-cal');
+  var appEl2 = document.getElementById('screen-app');
+  if(calEl) calEl.style.display='none';
+  if(appEl2){ appEl2.style.display='block'; appEl2.style.visibility='visible'; }
 
   // Update topbar date
   var dStr=isToday?'Hoy':'Editando: '+fmtDateFromKey(targetDate);
@@ -2000,8 +2003,10 @@ function backToCal(){
     if(!S._editingDate)lsSaveToday();
   }
 
-  document.getElementById('screen-app').style.display='none';
-  document.getElementById('screen-cal').style.display='flex';
+  var appEl3 = document.getElementById('screen-app');
+  var calEl3 = document.getElementById('screen-cal');
+  if(appEl3) appEl3.style.display='none';
+  if(calEl3) calEl3.style.display='flex';
   document.getElementById('back-to-cal').style.display='none';
   renderCalendar();
 }
