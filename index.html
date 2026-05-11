@@ -249,9 +249,9 @@ textarea:focus,input:focus,select:focus{border-color:#2563eb}
 .cal-stat-val.ok{color:var(--green)}.cal-stat-val.warn{color:var(--yellow)}.cal-stat-val.info{color:var(--blue)}
 .cal-stat-lbl{font-size:10px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
 /* Day modal */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:flex-end;justify-content:center}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:9999;align-items:flex-end;justify-content:center}
 .modal-overlay.on{display:flex}
-.modal-sheet{background:var(--bg);border-radius:18px 18px 0 0;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:1.25rem 1rem 2rem}
+.modal-sheet{background:var(--bg);border-radius:18px 18px 0 0;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:1.25rem 1rem 2rem;position:relative;z-index:10000}
 .modal-handle{width:36px;height:4px;background:var(--bg3);border-radius:2px;margin:0 auto 1rem}
 .modal-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
 .modal-sub{font-size:12px;color:var(--text2);margin-bottom:1rem}
@@ -313,18 +313,6 @@ textarea:focus,input:focus,select:focus{border-color:#2563eb}
 
   <button class="cal-enter-btn" onclick="enterApp()">Registrar hoy &#8594;</button>
 
-</div>
-
-<!-- ═══ DAY MODAL ═══ -->
-<div class="modal-overlay" id="day-modal">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <div class="modal-title" id="modal-title">—</div>
-    <div class="modal-sub" id="modal-sub">—</div>
-    <div id="modal-body"></div>
-    <button class="modal-save-btn" id="modal-go-btn" onclick="modalGoToDay()">Registrar este día &#8594;</button>
-    <button class="modal-close" onclick="closeModal()">Cerrar</button>
-  </div>
 </div>
 
 <!-- ═══ APP SCREEN ═══ -->
@@ -2063,5 +2051,17 @@ function init(){
 }
 init();
 </script>
+<!-- ═══ DAY MODAL ═══ -->
+<div class="modal-overlay" id="day-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modal-title">—</div>
+    <div class="modal-sub" id="modal-sub">—</div>
+    <div id="modal-body"></div>
+    <button class="modal-save-btn" id="modal-go-btn" onclick="modalGoToDay()">Registrar este día &#8594;</button>
+    <button class="modal-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
 </body>
 </html>
